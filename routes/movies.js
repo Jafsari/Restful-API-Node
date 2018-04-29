@@ -65,3 +65,15 @@ if (!movie){
 }
 res.send(movie);
 });
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const movie = await Movie.findByIdAndRemove(req.params.id)
+    }
+    catch{
+       return res.status(404).send('This id does not exist')
+    }
+    res.send(movie);
+});
+
+module.exports = router;
