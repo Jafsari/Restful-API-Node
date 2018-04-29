@@ -8,6 +8,8 @@ const router = express.router();
 
 //Create
 router.post('/', async (req,res) => {
+    //Before we even touch our database, lets see if the first validation accepts
+    // the data we are receiving.
     const { error } = ValidateCustomer(req.body);
     if (error){
         return res.status(400).send(error.details[0].mesage)
